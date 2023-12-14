@@ -4,6 +4,7 @@ package com.Ecomm_Backend.Controller;
 import com.Ecomm_Backend.Model.Product;
 import com.Ecomm_Backend.Model.User;
 import com.Ecomm_Backend.Service.userService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -81,8 +82,17 @@ public class UserController {
             return ResponseEntity.created(location).build();
         }
         return ResponseEntity.badRequest().build();
+    }
 
-
+    @DeleteMapping("/item/{product_Id}/user/{user_Id}")
+    public ResponseEntity<?> deleteProductFromCart(@PathVariable String product_Id,@PathVariable String user_Id)
+    {
+       boolean status =  userServ.deleteProductforUser(user_Id,product_Id);
+       if(status)
+       {
+           return ResponseEntity.ok().build();
+       }
+       return ResponseEntity.notFound().build();
     }
 
 

@@ -19,7 +19,7 @@ public class UserData implements UserRepo {
     @Override
     public User userSave(User userinfo) {
 
-        String key = ""+userinfo.getId()+userinfo.getName();
+        String key = ""+userinfo.getUser_Id()+userinfo.getName();
 
         if(Storage.userData.containsKey(key))
         {
@@ -34,7 +34,7 @@ public class UserData implements UserRepo {
 
     @Override
     public boolean querybyId(User user) {
-        String key = ""+user.getId()+user.getName();
+        String key = ""+user.getUser_Id()+user.getName();
         if(Storage.userData.isEmpty())
         {
           return false;

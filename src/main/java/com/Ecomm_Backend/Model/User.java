@@ -21,20 +21,12 @@ import java.util.List;
 public class User {
 
     @MongoId
-    private String id;
-
-    @Indexed(unique = true)
+    private String user_Id;
     private String name;
-
-
     private String emailId;
-
     private boolean membership;
-
     private String phoneNum;
-
     private String password;
-
     List<Product> productList;
 
 

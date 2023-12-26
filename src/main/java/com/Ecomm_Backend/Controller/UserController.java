@@ -6,6 +6,7 @@ import com.Ecomm_Backend.Model.User;
 import com.Ecomm_Backend.Service.userService;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -13,8 +14,11 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
-@RestController("/")
+@RestController
+@RequestMapping("${api.endpoint.baseurl}")
 public class UserController {
+
+
 
     @Autowired
     userService userServ;
@@ -46,8 +50,7 @@ public class UserController {
        if(null!=savedUser) {
            location = ServletUriComponentsBuilder
                    .fromCurrentRequest()
-                   .path("/{name}")
-                   .buildAndExpand(savedUser.getName()).toUri();
+                   .buildAndExpand(savedUser.getUsername()).toUri();
            return ResponseEntity.created(location).build();
        }
        return ResponseEntity.badRequest().build();
@@ -63,7 +66,7 @@ public class UserController {
             location = ServletUriComponentsBuilder
                     .fromCurrentRequest()
                     .path("/{user}")
-                    .buildAndExpand(updatedUser.getName())
+                    .buildAndExpand(updatedUser.getUsername())
                     .toUri();
             return ResponseEntity.created(location).build();
         }

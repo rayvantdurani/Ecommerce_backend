@@ -13,13 +13,13 @@ import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
-@RestController("/product")
+@RestController("/api/product")
 public class ProductContoller {
 
     @Autowired
     productService productServ;
 
-    @PostMapping("/addProduct")
+    @PostMapping("/access/addProduct")
     public ResponseEntity<Object> addProduct(@RequestBody Product product)
     {
         Product savedProduct = productServ.saveProduct(product);
@@ -35,7 +35,7 @@ public class ProductContoller {
         return ResponseEntity.badRequest().build();
     }
 
-    @PutMapping("/{product_Id}")
+    @PutMapping("/access/{product_Id}")
     public ResponseEntity<?> updateProduct(@PathVariable Long product_Id, @RequestBody Product product) {
         try {
             Product updatedProduct = productServ.updateProduct(product_Id, product);
@@ -52,7 +52,7 @@ public class ProductContoller {
     }
 
 
-    @GetMapping("/stock")
+    @GetMapping("/access/stock")
     public ResponseEntity<List<Product>> getStock()
     {
         return productServ.getAllProducts();

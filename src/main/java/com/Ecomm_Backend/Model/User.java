@@ -24,21 +24,16 @@ import java.util.List;
 @Setter
 @ToString
 @Document(collection = "User")
-
 public class User implements Serializable {
 
     @MongoId
-    private String user_Id;
-
-    @Size(min = 3,max = 20)
     @Indexed
-    private String username;
+    private String user_Id;
     @Email
     private String emailId;
     private boolean membership;
     @Size(min = 10,max = 10)
     private String phoneNum;
-    private String password;
     private List<Product> productList;
 
 

@@ -23,6 +23,21 @@ public class UserController {
     @Autowired
     userService userServ;
 
+//    @PostMapping("/create")
+//    public ResponseEntity<Object> createUser(@RequestBody User user)
+//    {
+//
+//        User savedUser = userServ.createUser(user);
+//        URI location =null;
+//        if(null!=savedUser) {
+//            location = ServletUriComponentsBuilder
+//                    .fromCurrentRequest()
+//                    .buildAndExpand(savedUser.getUserName()).toUri();
+//            return ResponseEntity.created(location).build();
+//        }
+//        return ResponseEntity.badRequest().build();
+//    }
+
     @GetMapping("/getUser")
     public ResponseEntity<List<User>> getAllUser()
     {
@@ -41,20 +56,7 @@ public class UserController {
 
 
 
-    @PostMapping("/create")
-    public ResponseEntity<Object> createUser(@RequestBody User user)
-    {
 
-       User savedUser = userServ.createUser(user);
-        URI location =null;
-       if(null!=savedUser) {
-           location = ServletUriComponentsBuilder
-                   .fromCurrentRequest()
-                   .buildAndExpand(savedUser.getUsername()).toUri();
-           return ResponseEntity.created(location).build();
-       }
-       return ResponseEntity.badRequest().build();
-    }
 
     @PutMapping("/update")
     public ResponseEntity<Object> updateUser(@RequestBody User user)
@@ -66,7 +68,7 @@ public class UserController {
             location = ServletUriComponentsBuilder
                     .fromCurrentRequest()
                     .path("/{user}")
-                    .buildAndExpand(updatedUser.getUsername())
+                    .buildAndExpand(updatedUser.getUserName())
                     .toUri();
             return ResponseEntity.created(location).build();
         }

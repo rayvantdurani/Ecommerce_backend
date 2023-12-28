@@ -21,16 +21,6 @@ public class userService {
     @Autowired
     private userRepo userR;
 
-    public User createUser(User user)
-    {
-        try
-        {
-         return  userR.save(user);
-        }catch (Exception e)
-        {
-            return null;
-        }
-    }
 
 
     public User upateUserInfo(User user) {

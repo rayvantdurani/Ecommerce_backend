@@ -27,13 +27,14 @@ import java.util.List;
 public class User implements Serializable {
 
     @MongoId
-    @Indexed
     private String user_Id;
-    @Email
     private String emailId;
+    @Indexed
+    private String userName;
     private boolean membership;
-    @Size(min = 10,max = 10)
     private String phoneNum;
+    private String password;
+    private String role;
     private List<Product> productList;
 
 

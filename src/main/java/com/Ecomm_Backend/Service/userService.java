@@ -22,7 +22,6 @@ public class userService {
     private userRepo userR;
 
 
-
     public User upateUserInfo(User user) {
         try
         {

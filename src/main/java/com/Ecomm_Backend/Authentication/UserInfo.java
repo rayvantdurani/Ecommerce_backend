@@ -1,6 +1,7 @@
 package com.Ecomm_Backend.Authentication;
 
 
+import com.Ecomm_Backend.Repository.UserAuthInterface;
 import com.Ecomm_Backend.Repository.userRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -19,7 +20,7 @@ public class UserInfo implements UserDetailsService {
 
 
     @Autowired
-    userRepo userAuth;
+    UserAuthInterface userAuth;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -28,7 +29,7 @@ public class UserInfo implements UserDetailsService {
         String password = null;
         List<GrantedAuthority> authorities = null;
 
-        List<com.Ecomm_Backend.Model.User> userList = userAuth.findbyuser_Id(username);
+        List<com.Ecomm_Backend.Model.UserAuth> userList = userAuth.findbyuser_Id(username);
         if(userList.isEmpty())
         {
             throw new UsernameNotFoundException("User Details Not Found"+username);
@@ -40,6 +41,6 @@ public class UserInfo implements UserDetailsService {
             authorities.add(new SimpleGrantedAuthority(userList.get(0).getRole()));
         }
 
-        return new User(username,password,authorities);
+        return new User(userName,password,authorities);
     }
 }

@@ -26,14 +26,12 @@ import java.util.List;
 @Document(collection = "User")
 public class User implements Serializable {
 
-    @MongoId
-    private String user_Id;
+
     private String emailId;
     @Indexed
     private String userName;
     private boolean membership;
     private String phoneNum;
-    private String password;
     private String role;
     private List<Product> productList;
 

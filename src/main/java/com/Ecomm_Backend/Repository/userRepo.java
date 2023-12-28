@@ -13,8 +13,6 @@ import java.util.Optional;
 public interface userRepo extends MongoRepository<User,String> {
 
 
-    @Query("{'userName' : ?0}")
-    List<User> findbyuser_Id(String user_Id);
 
 
 

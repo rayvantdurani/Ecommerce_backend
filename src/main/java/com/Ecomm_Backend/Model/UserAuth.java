@@ -16,7 +16,7 @@ import java.util.List;
 @Document(collection = "UserAuthentication")
 public class UserAuth {
 
-    @Id
+
     @Indexed
     private String userName;
     private String password;

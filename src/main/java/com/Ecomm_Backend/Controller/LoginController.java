@@ -67,8 +67,6 @@ public class LoginController {
         userData.setPhoneNum(null);
         userData.setEmailId(null);
         userrepo.save(userData);
-
-
     }
 
 }
